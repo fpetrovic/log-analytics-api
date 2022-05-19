@@ -1,16 +1,12 @@
 <?php
 
-/** @noinspection PhpDocSignatureIsNotCompleteInspection */
-
-/** @noinspection PhpRedundantCatchClauseInspection */
-
 namespace App\Command;
 
 use App\Decorator\ConnectionImportDecorator;
 use App\Enum\LogRegexPatternMatching;
 use App\Exception\InvalidRegexMatchingException;
 use DateTime;
-use Exception;
+use Doctrine\DBAL\Exception;
 use Generator;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -41,9 +37,6 @@ class LogImportCommand extends Command
         ;
     }
 
-    /**
-     * @throws Exception
-     */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         try {
@@ -69,7 +62,7 @@ class LogImportCommand extends Command
 
                 $this->connectionImportDecorator->getConnection()->executeQuery($preparedSqlStatement);
             }
-        } catch (InvalidRegexMatchingException) {
+        } catch (InvalidRegexMatchingException|Exception) {
             return Command::FAILURE;
         }
 
@@ -77,9 +70,7 @@ class LogImportCommand extends Command
     }
 
     /**
-     * @throws Exception|InvalidRegexMatchingException
-     *
-     * @return Generator<int, string>
+     * @throws InvalidRegexMatchingException
      */
     protected function getLinesSqlFromFileRead(string $logPath): Generator
     {

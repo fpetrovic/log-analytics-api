@@ -3,7 +3,6 @@
 namespace App\Enum;
 
 use App\Exception\InvalidRegexMatchingException;
-use Exception;
 
 enum LogRegexPatternMatching : string
 {
@@ -19,7 +18,7 @@ enum LogRegexPatternMatching : string
     private const MATCHED_ITEM_INDEX = 1;
 
     /**
-     * @throws Exception
+     * @throws InvalidRegexMatchingException
      */
     public function getMatchingItem(string $line): string
     {
