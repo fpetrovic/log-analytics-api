@@ -1,4 +1,4 @@
-use `log`;
+use `log-analytics-api`;
 
 INSERT INTO `log` (service_name, created_at, request_method, uri, status_code)
 VALUES ('test-suite-service', '2021/08/17:09:21:53','POST','/users','201'),
