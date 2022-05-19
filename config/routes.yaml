@@ -1,0 +1,5 @@
+api_logs_count:
+    path:       /api/logs/count
+    controller: App\Controller\LogController::count
+    methods:    GET
+
