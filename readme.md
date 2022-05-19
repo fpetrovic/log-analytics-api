@@ -1,8 +1,9 @@
 Log Analytics API:
 
 Pre-requirements:
-php 8.1.5
-docker (the latest version has been used (20.10.15))
+- php 8.1.5
+- docker (the latest version has been used (20.10.15))
+
 Setup steps:
 - `git clone git@github.com:fpetrovic/log-analytics-api.git`
 - From the project root: `docker-compose up` or `docker-compose up -d` ( for detached)
