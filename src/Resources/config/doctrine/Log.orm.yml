@@ -1,0 +1,33 @@
+App\Entity\Log:
+  type: entity
+  table: log
+  readOnly: false
+  id:
+    id:
+      type: bigint
+      nullable: false
+      options:
+        unsigned: false
+      id: true
+      generator:
+        strategy: IDENTITY
+  fields:
+    serviceName:
+      type: string
+      nullable: false
+      length: 255
+    createdAt:
+      type: datetime_immutable
+      nullable: false
+    requestMethod:
+      type: string
+      nullable: false
+      length: 7
+    uri:
+      type: string
+      nullable: false
+    statusCode:
+      type: integer
+      nullable: false
+      length: 3
+  lifecycleCallbacks: {  }
